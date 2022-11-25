@@ -1,18 +1,21 @@
 import React, { Component } from "react";
+import Contact from "./Contact/Contact";
 
 class ContactList extends Component {
 	render() {
-		const { contacts } = this.props;
+		const { contacts, filter } = this.props;
 
 		return (
 			<ul>
-				{contacts.map((contact) => {
-					return (
-						<li key={contact.id}>
-							{contact.name}: {contact.number}
-						</li>
-					);
-				})}
+				{contacts
+					.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()))
+					.map((contact) => {
+						return (
+							<Contact key={contact.id}>
+								{contact.name} : {contact.number}
+							</Contact>
+						);
+					})}
 			</ul>
 		);
 	}
