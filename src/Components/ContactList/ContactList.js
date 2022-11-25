@@ -3,7 +3,7 @@ import Contact from "./Contact/Contact";
 
 class ContactList extends Component {
 	render() {
-		const { contacts, filter } = this.props;
+		const { contacts, filter, onClickHandler } = this.props;
 
 		return (
 			<ul>
@@ -12,7 +12,10 @@ class ContactList extends Component {
 					.map((contact) => {
 						return (
 							<Contact key={contact.id}>
-								{contact.name} : {contact.number}
+								{contact.name} : {contact.number}{" "}
+								<button id={contact.id} onClick={onClickHandler}>
+									Delete
+								</button>
 							</Contact>
 						);
 					})}

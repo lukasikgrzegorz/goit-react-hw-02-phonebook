@@ -15,14 +15,31 @@ class App extends Component {
 		filter: "",
 	};
 
-	addContact = (newContact) => {
+	checkContact = (newContact) => {
 		const { contacts } = this.state;
-		contacts.push(newContact);
-		this.setState({ contacts: contacts });
+		const isInBase = contacts.some((contact) => contact.name === newContact.name);
+		return isInBase;
+	};
+
+	addContact = (newContact) => {
+		const check = this.checkContact(newContact);
+		if (!check) {
+			const { contacts } = this.state;
+			contacts.push(newContact);
+			this.setState({ contacts: contacts });
+		} else {
+			alert(`${newContact.name} is alerdy in contacts`);
+		}
 	};
 
 	changeFilterHandler = (e) => {
 		this.setState({ filter: e.target.value });
+	};
+
+	deleteUser = (e) => {
+		const { contacts } = this.state;
+		const filtered = contacts.filter((contact) => contact.id !== e.target.id);
+		this.setState({ contacts: filtered });
 	};
 
 	render() {
@@ -33,7 +50,11 @@ class App extends Component {
 
 				<h2>Contacts</h2>
 				<Filter changeHandler={this.changeFilterHandler}></Filter>
-				<ContactList filter={this.state.filter} contacts={this.state.contacts}></ContactList>
+				<ContactList
+					filter={this.state.filter}
+					contacts={this.state.contacts}
+					onClickHandler={this.deleteUser}
+				></ContactList>
 			</div>
 		);
 	}
