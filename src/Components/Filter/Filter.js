@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./Filter.module.css";
+import PropTypes from "prop-types";
 
 const Filter = ({ changeHandler }) => {
 	return (
@@ -13,6 +14,10 @@ const Filter = ({ changeHandler }) => {
 			></input>
 		</div>
 	);
+};
+
+Filter.propTypes = {
+	changeHandler: PropTypes.func.isRequired,
 };
 
 export default Filter;
