@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import css from "./App.module.css";
 import ContactForm from "./Components/ContactForm/ContactForm";
 import Filter from "./Components/Filter/Filter";
 import ContactList from "./Components/ContactList/ContactList";
@@ -44,7 +44,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className={css["container"]}>
 				<h1>Phonebook</h1>
 				<ContactForm onSubmit={(values) => this.addContact(values)}></ContactForm>
 

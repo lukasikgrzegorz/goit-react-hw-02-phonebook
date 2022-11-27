@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { nanoid } from "nanoid";
+import css from "./ContactForm.module.css";
 
 const INITIAL_STATE = {
 	name: "",
@@ -24,7 +25,7 @@ class ContactForm extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
+			<form onSubmit={this.handleSubmit} className={css["form-container"]}>
 				<label htmlFor="name">Name</label>
 				<input
 					type="text"
