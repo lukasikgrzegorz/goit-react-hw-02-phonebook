@@ -47,7 +47,7 @@ class App extends Component {
 		return (
 			<div className={css["container"]}>
 				<h1>Phonebook</h1>
-				<ContactForm onSubmit={this.addContact}></ContactForm>
+				<ContactForm onSubmit={this.addContact} />
 
 				<h2>Contacts</h2>
 				<Filter changeHandler={this.changeFilterValue}></Filter>
